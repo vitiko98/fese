@@ -72,6 +72,13 @@ def test_wo_language(sub_stream):
         FFprobeSubtitleStream(new_stream)
 
 
+def test_language_converter_exception(sub_stream):
+    new_stream = copy.copy(sub_stream)
+    new_stream["tags"].update({"language": "fil"})
+    with pytest.raises(LanguageNotFound):
+        FFprobeSubtitleStream(new_stream)
+
+
 @pytest.mark.parametrize(
     "content,alpha3,expected_country",
     [
