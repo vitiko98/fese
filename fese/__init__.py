@@ -339,17 +339,20 @@ def check_integrity(
     except (pysubs2.Pysubs2Error, UnicodeError, OSError, FileNotFoundError) as error:
         raise InvalidFile(error) from error
     else:
-        if (
-            subtitle.duration_ts is not None
-        ):  # ignore the duration check if the stream has no duration listed at all
+        # ignore the duration check if the stream has no duration listed at all
+        if subtitle.duration_ts:
             off = abs(int(sub[-1].end) - subtitle.duration_ts)
             if off > abs(sec_offset_threshold) * 1000:
                 raise InvalidFile(
                     f"The last subtitle timestamp ({sub[-1].end/1000} sec) is {off/1000} sec ahead"
                     f" from the subtitle stream total duration ({subtitle.duration} sec)"
                 )
-
-                logger.debug("Integrity check passed (%d sec offset)", off / 1000)
+            logger.debug("Integrity check passed (%d sec offset)", off / 1000)
+        else:
+            logger.warning(
+                "Ignoring duration check, subtitle stream has bad duration values: %s",
+                subtitle,
+            )
 
 
 def to_srt(
