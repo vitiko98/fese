@@ -132,7 +132,7 @@ def test_duration_ms():
             "language": "eng",
             "BPS": "173",
             "BPS-eng": "173",
-            "DURATION": "00:25:00.250000000",
+            "DURATION": "00:25:00,250000000",
             "DURATION-eng": "00:25:00.250000000",
             "NUMBER_OF_FRAMES": "439",
             "NUMBER_OF_FRAMES-eng": "439",
