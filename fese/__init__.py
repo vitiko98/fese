@@ -14,7 +14,7 @@ from babelfish import Language
 from babelfish.exceptions import LanguageError
 import pysubs2
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 
 logger = logging.getLogger(__name__)
 
