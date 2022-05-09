@@ -109,9 +109,16 @@ class FFprobeVideoContainer:
         collected_paths = set()
 
         for subtitle in subtitles:
-            sub_path = f"{os.path.splitext(self.path)[0]}_{len(collected_paths):02}"
+            extension_to_use = convert_format or subtitle.extension
+
+            sub_path = (
+                f"{os.path.splitext(self.path)[0]}.{subtitle.suffix}.{extension_to_use}"
+            )
             if custom_dir is not None:
                 sub_path = os.path.join(custom_dir, os.path.basename(sub_path))
+
+            if not overwrite and sub_path in collected_paths:
+                sub_path = f"{os.path.splitext(sub_path)[0]}.{len(collected_paths):02}.{extension_to_use}"
 
             if not overwrite and os.path.isfile(sub_path):
                 logger.debug("Ignoring path (OVERWRITE TRUE): %s", sub_path)
