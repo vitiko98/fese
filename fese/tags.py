@@ -32,7 +32,7 @@ class FFprobeMkvSubtitleTags(FFprobeGenericSubtitleTags):
 
         self.title = data.get("title")
         self.bps = _safe_int(data.get("BPS"))
-        self.bpg_eng = _safe_int(data.get("BPS-eng"))
+        self.bps_eng = _safe_int(data.get("BPS-eng"))
         self.duration = _safe_td(data.get("DURATION"))
         self.duration_eng = _safe_td(data.get("DURATION-eng"))
         self.number_of_frames = _safe_int(data.get("NUMBER_OF_FRAMES"))
