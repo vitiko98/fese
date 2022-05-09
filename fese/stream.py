@@ -81,7 +81,6 @@ class FFprobeSubtitleStream:
             for item in (
                 self.tags.suffix,
                 self.disposition.suffix,
-                self.extension,
             )
             if item
         )

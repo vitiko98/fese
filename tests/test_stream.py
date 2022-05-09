@@ -56,16 +56,16 @@ def test_init(subtitle):
     assert subtitle.disposition is not None
 
 
-def test_extension(subtitle):
-    assert subtitle.extension == "ass"
-
-
 def test_language(subtitle):
     assert subtitle.language.alpha3 == "eng"
 
 
 def test_suffix(subtitle):
-    assert subtitle.suffix == "en.ass"
+    assert subtitle.suffix == "en"
+
+
+def test_extension(subtitle):
+    assert subtitle.extension == "ass"
 
 
 def test_disposition(subtitle):
