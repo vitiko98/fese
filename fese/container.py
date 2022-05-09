@@ -148,4 +148,9 @@ class FFprobeVideoContainer:
         return f"<FFprobeVideoContainer {self.extension}: {self.path}>"
 
 
-_ffprobe_exceptions = (Exception,)
+_ffprobe_exceptions = (
+    subprocess.SubprocessError,
+    json.JSONDecodeError,
+    FileNotFoundError,
+    KeyError,
+)
