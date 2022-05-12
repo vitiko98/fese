@@ -13,7 +13,6 @@ from .exceptions import InvalidSource
 from .exceptions import LanguageNotFound
 from .exceptions import UnsupportedCodec
 from .stream import FFprobeSubtitleStream
-from .tags import get_tags_cls
 
 logger = logging.getLogger(__name__)
 
@@ -28,7 +27,6 @@ FF_LOG_LEVEL = "quiet"
 class FFprobeVideoContainer:
     def __init__(self, path: str):
         self.path = path
-        self._tag_cls = get_tags_cls(self.extension)
 
     @property
     def extension(self):
@@ -65,7 +63,7 @@ class FFprobeVideoContainer:
             if stream.get("codec_type", "n/a") != "subtitle":
                 continue
             try:
-                subs.append(FFprobeSubtitleStream(stream, tags_cls=self._tag_cls))
+                subs.append(FFprobeSubtitleStream(stream))
             except (LanguageNotFound, UnsupportedCodec) as error:
                 logger.debug("Ignoring %s: %s", stream.get("codec_name"), error)
 

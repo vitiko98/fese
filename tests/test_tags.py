@@ -73,3 +73,17 @@ def test_language_converter_exception():
 def test_w_custom_language(content, alpha3, expected_country):
     tags_obj = tags.FFprobeGenericSubtitleTags({"title": content, "language": alpha3})
     assert tags_obj.language.country == expected_country
+
+
+@pytest.mark.parametrize(
+    "data,expexted_cls",
+    [
+        ({"BPS-eng": 123, "language": "eng"}, tags.FFprobeMkvSubtitleTags),
+        ({"creation_time": "123", "language": "eng"}, tags.FFprobeMp4SubtitleTags),
+        ({"language": "eng"}, tags.FFprobeGenericSubtitleTags),
+    ],
+)
+def test_detect_cls_from_data(data, expexted_cls):
+    assert isinstance(
+        tags.FFprobeGenericSubtitleTags.detect_cls_from_data(data), expexted_cls
+    )

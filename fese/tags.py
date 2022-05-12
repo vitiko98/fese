@@ -1,8 +1,8 @@
 from datetime import timedelta
 import logging
 
-from babelfish.exceptions import LanguageError
 from babelfish import Language
+from babelfish.exceptions import LanguageError
 
 from .exceptions import LanguageNotFound
 
@@ -10,9 +10,21 @@ logger = logging.getLogger(__name__)
 
 
 class FFprobeGenericSubtitleTags:
+    _DETECTABLE_TAGS = None
+
     def __init__(self, data: dict):
         self.language = _get_language(data)
         self._data = data
+
+    @classmethod
+    def detect_cls_from_data(cls, data):
+        for cls_ in _tag_classes:
+            if cls_.is_compatible(data):
+                logger.debug("Detected tags class: %s", cls_)
+                return cls_(data)
+
+        logger.debug("Unable to detect tags class. Using generic")
+        return FFprobeGenericSubtitleTags(data)
 
     @property
     def suffix(self):
@@ -22,11 +34,26 @@ class FFprobeGenericSubtitleTags:
 
         return str(lang)
 
+    @classmethod
+    def is_compatible(cls, data):
+        return False
+
     def __str__(self) -> str:
         return f"{type(self).__name__}: {self.suffix}"
 
 
 class FFprobeMkvSubtitleTags(FFprobeGenericSubtitleTags):
+    _DETECTABLE_TAGS = (
+        "BPS",
+        "BPS-eng",
+        "DURATION",
+        "DURATION-eng",
+        "NUMBER_OF_FRAMES",
+        "NUMBER_OF_FRAMES-eng",
+        "NUMBER_OF_BYTES",
+        "NUMBER_OF_BYTES-eng",
+    )
+
     def __init__(self, data: dict):
         super().__init__(data)
 
@@ -40,15 +67,42 @@ class FFprobeMkvSubtitleTags(FFprobeGenericSubtitleTags):
         self.number_of_bytes = _safe_int(data.get("NUMBER_OF_BYTES"))
         self.number_of_bytes_eng = _safe_int(data.get("NUMBER_OF_BYTES-eng"))
 
+    @classmethod
+    def is_compatible(cls, data):
+        return any(
+            key
+            in (
+                "BPS",
+                "BPS-eng",
+                "DURATION",
+                "DURATION-eng",
+                "NUMBER_OF_FRAMES",
+                "NUMBER_OF_FRAMES-eng",
+                "NUMBER_OF_BYTES",
+                "NUMBER_OF_BYTES-eng",
+            )
+            for key in data.keys()
+        )
+
 
 class FFprobeMp4SubtitleTags(FFprobeGenericSubtitleTags):
+    _DETECTABLE_TAGS = ("creation_time", "handler_name")
+
     def __init__(self, data: dict):
         super().__init__(data)
         self.creation_time = data.get("creation_time")
         self.handler_name = data.get("handler_name")
 
+    @classmethod
+    def is_compatible(cls, data):
+        return any(key in ("creation_time", "handler_name") for key in data.keys())
+
 
 _containers_map = {"mkv": FFprobeMkvSubtitleTags, "mp4": FFprobeMp4SubtitleTags}
+_tag_classes = (
+    FFprobeMkvSubtitleTags,
+    FFprobeMp4SubtitleTags,
+)
 
 
 def get_tags_cls(extension):

@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 class FFprobeSubtitleStream:
     """Base class for FFprobe (FFmpeg) extractable subtitle streams."""
 
-    def __init__(self, stream: dict, tags_cls=None):
+    def __init__(self, stream: dict):
         """
         :raises: LanguageNotFound, UnsupportedCodec
         """
@@ -34,7 +34,9 @@ class FFprobeSubtitleStream:
         self.duration_ts = timedelta(milliseconds=int(stream.get("duration_ts", 0)))
         self.duration = timedelta(seconds=float(stream.get("duration", 0)))
 
-        self.tags = (tags_cls or FFprobeGenericSubtitleTags)(stream.get("tags", {}))
+        self.tags = FFprobeGenericSubtitleTags.detect_cls_from_data(
+            stream.get("tags", {})
+        )
         self.disposition = FFprobeSubtitleDisposition(stream.get("disposition", {}))
 
         if stream.get("tags") is not None:
