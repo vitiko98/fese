@@ -50,6 +50,8 @@ def test_suffix(item, expected):
     [
         ("CommenTaRy", "comment"),
         ("forCed", "forced"),
+        ("non-english", "forced"),
+        ("non english", "forced"),
         ("kaRaoke", "karaoke"),
         ("sdH", "hearing_impaired"),
         ("cc", "hearing_impaired"),

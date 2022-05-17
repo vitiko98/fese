@@ -61,7 +61,7 @@ class FFprobeSubtitleDisposition:
 
 _content_types = {
     "hearing_impaired": re.compile(r"sdh|hearing impaired|cc"),
-    "forced": re.compile(r"forced"),
+    "forced": re.compile(r"forced|non[- ]english"),
     "comment": re.compile(r"comment"),
     "visual_impaired": re.compile(r"signs|visual impair"),
     "karaoke": re.compile(r"karaoke|songs"),
