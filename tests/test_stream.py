@@ -68,6 +68,10 @@ def test_extension(subtitle):
     assert subtitle.extension == "ass"
 
 
+def test_type(subtitle):
+    assert subtitle.type == "text"
+
+
 def test_disposition(subtitle):
     assert subtitle.disposition.hearing_impaired == False
 
@@ -75,6 +79,18 @@ def test_disposition(subtitle):
 def test_durations(subtitle):
     assert subtitle.duration_ts == timedelta(milliseconds=1218718)
     assert subtitle.duration == timedelta(seconds=1218.718)
+
+
+def test_init_raises_unsupported_codec():
+    with pytest.raises(UnsupportedCodec):
+        return FFprobeSubtitleStream({"codec_name": "avc", "index": 1})
+
+
+def test_init_raises_language_not_found():
+    with pytest.raises(LanguageNotFound):
+        return FFprobeSubtitleStream(
+            {"codec_name": "ass", "index": 1, "tags": {"language": "und"}}
+        )
 
 
 def test_copy_args(subtitle):
@@ -89,37 +105,70 @@ def test_copy_args(subtitle):
     ]
 
 
-def test_convert_ars(subtitle):
-    assert subtitle.convert_args("srt", "test") == [
+@pytest.mark.parametrize("codec_name", ["ass", "subrip", "webvtt", "mov_text"])
+def test_convert_args_none_fallback(codec_name):
+    stream = FFprobeSubtitleStream(
+        {"codec_name": codec_name, "index": 1, "tags": {"language": "eng"}}
+    )
+    assert stream.convert_args(None, "test") == [
         "-map",
-        "0:3",
+        "0:1",
         "-f",
         "srt",
         "test",
     ]
 
 
-def test_unsupported_codec():
+def test_convert_args_set_codec_name(subtitle):
+    assert subtitle.convert_args("ass", "test") == [
+        "-map",
+        "0:3",
+        "-f",
+        "ass",
+        "test",
+    ]
+
+
+def test_convert_args_raises_set_codec_name_unsupported_codec(
+    subtitle: FFprobeSubtitleStream,
+):
     with pytest.raises(UnsupportedCodec):
-        return FFprobeSubtitleStream({"codec_name": "avc", "index": 1})
+        subtitle.convert_args("avc", "test")
 
 
-def test_language_not_found():
-    with pytest.raises(LanguageNotFound):
-        return FFprobeSubtitleStream(
-            {"codec_name": "ass", "index": 1, "tags": {"language": "und"}}
-        )
-
-
-def test_convert_unsupported_codec():
+def test_convert_args_mov_text():
     stream = FFprobeSubtitleStream(
-        {"codec_name": "hdmv_pgs_subtitle", "index": 1, "tags": {"language": "eng"}}
+        {"codec_name": "mov_text", "index": 1, "tags": {"language": "eng"}}
+    )
+    assert stream.convert_args(None, "test") == [
+        "-map",
+        "0:1",
+        "-f",
+        "srt",
+        "test",
+    ]
+
+
+def test_copy_args_mov_text_raises_unsupported_codec():
+    stream = FFprobeSubtitleStream(
+        {"codec_name": "mov_text", "index": 1, "tags": {"language": "eng"}}
+    )
+    with pytest.raises(UnsupportedCodec):
+        stream.copy_args("test")
+
+
+@pytest.mark.parametrize(
+    "codec_name", ["hdmv_pgs_subtitle", "dvb_subtitle", "dvd_subtitle"]
+)
+def test_convert_raises_unsupported_codec(codec_name):
+    stream = FFprobeSubtitleStream(
+        {"codec_name": codec_name, "index": 1, "tags": {"language": "eng"}}
     )
     with pytest.raises(UnsupportedCodec):
         stream.convert_args("srt", "test")
 
 
-def test_convert_unsupported_codec_2():
+def test_convert_raises_unsupported_codec_2():
     stream = FFprobeSubtitleStream(
         {"codec_name": "subrip", "index": 1, "tags": {"language": "eng"}}
     )

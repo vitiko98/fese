@@ -42,18 +42,31 @@ class FFprobeSubtitleStream:
         if stream.get("tags") is not None:
             self.disposition.update_from_tags(stream["tags"])
 
-    def convert_args(self, codec_name, outfile):
-        if not any(codec_name == item["copy_format"] for item in _codecs.values()):
-            raise UnsupportedCodec(f"Unknown codec: {codec_name}")
+    def convert_args(self, convert_format, outfile):
+        """
+        convert_format: Union[str, None] = the codec format to convert. if None is set, defaults
+        to 'convert_default_format' codec's key
+        outfile: str = output file
+
+        raises UnsupportedCodec if convert_format doesn't exist or if the codec doesn't
+        support conversion
+        """
+        convert_format = convert_format or self._codec["convert_default_format"]
+
+        if convert_format is None or not any(
+            convert_format == item["copy_format"] for item in _codecs.values()
+        ):
+            raise UnsupportedCodec(f"Unknown convert format: {convert_format}")
 
         if not self._codec["convert"]:
             raise UnsupportedCodec(
                 f"{self.codec_name} codec doesn't support conversion"
             )
 
-        return ["-map", f"0:{self.index}", "-f", codec_name, outfile]
+        return ["-map", f"0:{self.index}", "-f", convert_format, outfile]
 
     def copy_args(self, outfile):
+        "raises UnsupportedCodec if the codec doesn't support copy"
         if not self._codec["copy"] or not self._codec["copy_format"]:
             raise UnsupportedCodec(f"{self.codec_name} doesn't support copy")
 
@@ -74,7 +87,15 @@ class FFprobeSubtitleStream:
 
     @property
     def extension(self):
-        return self._codec["copy_format"] or ""
+        return self._codec["copy_format"] or self._codec["convert_default_format"] or ""
+
+    @property
+    def convert_default_format(self):
+        return self._codec["convert_default_format"]
+
+    @property
+    def type(self):
+        return self._codec["type"]
 
     @property
     def suffix(self):
@@ -92,26 +113,53 @@ class FFprobeSubtitleStream:
 
 
 _codecs = {
-    "ass": {"type": "text", "copy": True, "copy_format": "ass", "convert": True},
-    "subrip": {"type": "text", "copy": True, "copy_format": "srt", "convert": True},
-    "webvtt": {"type": "text", "copy": True, "copy_format": "webvtt", "convert": True},
-    "mov_text": {"type": "text", "copy": False, "copy_format": "", "convert": True},
+    "ass": {
+        "type": "text",
+        "copy": True,
+        "copy_format": "ass",
+        "convert": True,
+        "convert_default_format": "srt",
+    },
+    "subrip": {
+        "type": "text",
+        "copy": True,
+        "copy_format": "srt",
+        "convert": True,
+        "convert_default_format": "srt",
+    },
+    "webvtt": {
+        "type": "text",
+        "copy": True,
+        "copy_format": "webvtt",
+        "convert": True,
+        "convert_default_format": "srt",
+    },
+    "mov_text": {
+        "type": "text",
+        "copy": False,
+        "copy_format": None,
+        "convert": True,
+        "convert_default_format": "srt",
+    },
     "hdmv_pgs_subtitle": {
         "type": "bitmap",
         "copy": True,
         "copy_format": "sup",
         "convert": False,
+        "convert_default_format": None,
     },
     "dvb_subtitle": {
         "type": "bitmap",
         "copy": True,
         "copy_format": "sup",
         "convert": False,
+        "convert_default_format": None,
     },
     "dvd_subtitle": {
         "type": "bitmap",
         "copy": True,
         "copy_format": "sup",
         "convert": False,
+        "convert_default_format": None,
     },
 }
