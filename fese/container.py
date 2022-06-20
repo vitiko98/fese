@@ -33,7 +33,7 @@ class FFprobeVideoContainer:
         return os.path.splitext(self.path)[-1].lstrip(".")
 
     def get_subtitles(self, timeout: int = 600):
-        """Factory function to create subtitle instances from FFprobe.
+        """Factory function to create subtitle (stream) instances from FFprobe.
 
         :param timeout: subprocess timeout in seconds (default: 600)
         :raises: InvalidSource"""
@@ -82,8 +82,11 @@ class FFprobeVideoContainer:
         timeout=600,
         convert_format=None,
     ):
-        """Extracts a list of subtitles. Returns a dictionary of the extracted
-        filenames by index.
+        """Extracts a list of subtitles converting them. Returns a dictionary of the
+        extracted filenames by index.
+
+        Most bitmap subtitles will raise UnsupportedCodec as they don't support conversion.
+        For such formats use copy instead.
 
         :param subtitles: a list of FFprobeSubtitle instances
         :param custom_dir: a custom directory to save the subtitles. Defaults to
@@ -91,8 +94,8 @@ class FFprobeVideoContainer:
         :param overwrite: overwrite files with the same name (default: True)
         :param timeout: subprocess timeout in seconds (default: 600)
         :param convert_format: format to convert selected subtitles. Defaults to
-        copying them
-        :raises: ExtractionError, OSError
+        srt
+        :raises: ExtractionError, UnsupportedCodec, OSError
         """
         extract_command = [FFMPEG_PATH, "-v", FF_LOG_LEVEL]
         if FFMPEG_STATS:
@@ -107,7 +110,7 @@ class FFprobeVideoContainer:
         collected_paths = set()
 
         for subtitle in subtitles:
-            extension_to_use = convert_format or subtitle.extension
+            extension_to_use = convert_format or subtitle.convert_default_format
 
             sub_path = (
                 f"{os.path.splitext(self.path)[0]}.{subtitle.suffix}.{extension_to_use}"
@@ -122,10 +125,7 @@ class FFprobeVideoContainer:
                 logger.debug("Ignoring path (OVERWRITE TRUE): %s", sub_path)
                 continue
 
-            if convert_format is None:
-                extract_command.extend(subtitle.copy_args(sub_path))
-            else:
-                extract_command.extend(subtitle.convert_args(convert_format, sub_path))
+            extract_command.extend(subtitle.convert_args(convert_format, sub_path))
 
             logger.debug("Appending subtitle path: %s", sub_path)
             collected_paths.add(sub_path)
@@ -145,7 +145,84 @@ class FFprobeVideoContainer:
 
         for path in items.values():
             if not os.path.isfile(path):
-                logger.debug("%s was not extracted", path)
+                logger.warning("%s was not extracted", path)
+
+        return items
+
+    def copy_subtitles(
+        self,
+        subtitles,
+        custom_dir=None,
+        overwrite=True,
+        timeout=600,
+        fallback_to_convert=True,
+    ):
+        """Extracts a list of subtitles with ffmpeg's copy method. Returns a dictionary
+        of the extracted filenames by index.
+
+        :param subtitles: a list of FFprobeSubtitle instances
+        :param custom_dir: a custom directory to save the subtitles. Defaults to
+        same directory as the media file
+        :param overwrite: overwrite files with the same name (default: True)
+        :param timeout: subprocess timeout in seconds (default: 600)
+        :param fallback_to_convert: fallback to stream's default convert format if it is
+        incompatible with copy
+        :raises: ExtractionError, UnsupportedCodec, OSError
+        """
+        extract_command = [FFMPEG_PATH, "-v", FF_LOG_LEVEL]
+        if FFMPEG_STATS:
+            extract_command.append("-stats")
+        extract_command.extend(["-y", "-i", self.path])
+
+        if custom_dir is not None:
+            # May raise OSError
+            os.makedirs(custom_dir, exist_ok=True)
+
+        items = {}
+        collected_paths = set()
+
+        for subtitle in subtitles:
+            sub_path = f"{os.path.splitext(self.path)[0]}.{subtitle.suffix}.{subtitle.extension}"
+            if custom_dir is not None:
+                sub_path = os.path.join(custom_dir, os.path.basename(sub_path))
+
+            if not overwrite and sub_path in collected_paths:
+                sub_path = f"{os.path.splitext(sub_path)[0]}.{len(collected_paths):02}.{subtitle.extension}"
+
+            if not overwrite and os.path.isfile(sub_path):
+                logger.debug("Ignoring path (OVERWRITE TRUE): %s", sub_path)
+                continue
+
+            try:
+                extract_command.extend(subtitle.copy_args(sub_path))
+            except UnsupportedCodec:
+                if fallback_to_convert:
+                    logger.warning(
+                        "%s incompatible with copy. Using fallback", subtitle
+                    )
+                    extract_command.extend(subtitle.convert_args(None, sub_path))
+                else:
+                    raise
+
+            logger.debug("Appending subtitle path: %s", sub_path)
+            collected_paths.add(sub_path)
+
+            items[subtitle.index] = sub_path
+
+        if not items:
+            logger.debug("No subtitles to extract")
+            return {}
+
+        logger.debug("Extracting subtitle with command %s", " ".join(extract_command))
+
+        try:
+            subprocess.run(extract_command, timeout=timeout, check=True)
+        except (subprocess.SubprocessError, FileNotFoundError) as error:
+            raise ExtractionError(f"Error calling ffmpeg: {error}") from error
+
+        for path in items.values():
+            if not os.path.isfile(path):
+                logger.warning("%s was not extracted", path)
 
         return items
 
