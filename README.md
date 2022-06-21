@@ -8,7 +8,7 @@ A library to extract FFmpeg subtitle streams
 import logging
 import sys
 
-import fese
+from fese.container import FFprobeVideoContainer
 
 logging.basicConfig(level=logging.DEBUG)
 

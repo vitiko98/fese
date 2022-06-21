@@ -3,7 +3,7 @@
 
 import pytest
 
-from fese import FFprobeSubtitleDisposition
+from fese.disposition import FFprobeSubtitleDisposition
 
 
 def test_init():
@@ -27,6 +27,22 @@ def test_init():
         assert not value
 
     assert disposition.default is False
+    assert disposition.suffix == ""
+
+
+@pytest.mark.parametrize(
+    "item,expected",
+    [
+        ({}, ""),
+        ({"hearing_impaired": 0}, ""),
+        ({"hearing_impaired": 1}, "hearing_impaired"),
+        ({"forced": 1}, "forced"),
+        ({"comment": 1}, "comment"),
+        ({"karaoke": 1}, "karaoke"),
+    ],
+)
+def test_suffix(item, expected):
+    assert FFprobeSubtitleDisposition(item).suffix == expected
 
 
 @pytest.mark.parametrize(
@@ -34,8 +50,11 @@ def test_init():
     [
         ("CommenTaRy", "comment"),
         ("forCed", "forced"),
+        ("non-english", "forced"),
+        ("non english", "forced"),
         ("kaRaoke", "karaoke"),
         ("sdH", "hearing_impaired"),
+        ("cc", "hearing_impaired"),
         ("siGns", "visual_impaired"),
     ],
 )
@@ -44,3 +63,4 @@ def test_update_from_tags(title, key):
     disposition.update_from_tags({"title": title})
     assert getattr(disposition, key) is True
     assert disposition.generic is False
+    assert disposition.suffix == key
