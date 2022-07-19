@@ -61,7 +61,7 @@ def test_language(subtitle):
 
 
 def test_suffix(subtitle):
-    assert subtitle.suffix == "en"
+    assert subtitle.suffix == "en.ass"
 
 
 def test_extension(subtitle):

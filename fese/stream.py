@@ -101,10 +101,7 @@ class FFprobeSubtitleStream:
     def suffix(self):
         return ".".join(
             item
-            for item in (
-                self.tags.suffix,
-                self.disposition.suffix,
-            )
+            for item in (self.tags.suffix, self.disposition.suffix, self.extension)
             if item
         )
 
