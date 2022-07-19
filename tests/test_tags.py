@@ -61,6 +61,26 @@ def test_language_converter_exception():
         assert tags.FFprobeGenericSubtitleTags({"language": "fil"})
 
 
+def test_wo_language_w_language_fallback():
+    tags.LANGUAGE_FALLBACK = "en"
+
+    assert (
+        tags.FFprobeGenericSubtitleTags({"language": "Unknown"}).language.alpha3
+        == "eng"
+    )
+
+    tags.LANGUAGE_FALLBACK = None
+
+
+def test_wo_language_w_language_fallback_invalid():
+    tags.LANGUAGE_FALLBACK = "Unknown"
+
+    with pytest.raises(ValueError):
+        assert tags.FFprobeGenericSubtitleTags({"language": "Unknown"})
+
+    tags.LANGUAGE_FALLBACK = None
+
+
 @pytest.mark.parametrize(
     "content,alpha3,expected_country",
     [
