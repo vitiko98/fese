@@ -15,7 +15,6 @@ class FFprobeGenericSubtitleTags:
     _DETECTABLE_TAGS = None
 
     def __init__(self, data: dict):
-
         try:
             self.language = _get_language(data)
         except LanguageNotFound:
@@ -28,7 +27,7 @@ class FFprobeGenericSubtitleTags:
 
     @classmethod
     def detect_cls_from_data(cls, data):
-        for cls_ in _tag_classes:
+        for cls_ in (FFprobeMkvSubtitleTags, FFprobeMp4SubtitleTags):
             if cls_.is_compatible(data):
                 logger.debug("Detected tags class: %s", cls_)
                 return cls_(data)
@@ -43,6 +42,10 @@ class FFprobeGenericSubtitleTags:
             lang = f"{lang}-{self.language.country}"
 
         return str(lang)
+
+    @property
+    def frames(self):
+        return 0
 
     @classmethod
     def is_compatible(cls, data):
@@ -77,6 +80,10 @@ class FFprobeMkvSubtitleTags(FFprobeGenericSubtitleTags):
         self.number_of_bytes = _safe_int(data.get("NUMBER_OF_BYTES"))
         self.number_of_bytes_eng = _safe_int(data.get("NUMBER_OF_BYTES-eng"))
 
+    @property
+    def frames(self):
+        return self.number_of_frames or self.number_of_frames_eng or 0
+
     @classmethod
     def is_compatible(cls, data):
         return any(
@@ -106,17 +113,6 @@ class FFprobeMp4SubtitleTags(FFprobeGenericSubtitleTags):
     @classmethod
     def is_compatible(cls, data):
         return any(key in ("creation_time", "handler_name") for key in data.keys())
-
-
-_containers_map = {"mkv": FFprobeMkvSubtitleTags, "mp4": FFprobeMp4SubtitleTags}
-_tag_classes = (
-    FFprobeMkvSubtitleTags,
-    FFprobeMp4SubtitleTags,
-)
-
-
-def get_tags_cls(extension):
-    return _containers_map.get(extension, FFprobeGenericSubtitleTags)
 
 
 def _get_language(tags) -> Language:

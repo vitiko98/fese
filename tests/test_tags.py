@@ -64,10 +64,8 @@ def test_language_converter_exception():
 def test_wo_language_w_language_fallback():
     tags.LANGUAGE_FALLBACK = "en"
 
-    assert (
-        tags.FFprobeGenericSubtitleTags({"language": "Unknown"}).language.alpha3
-        == "eng"
-    )
+    tags_ = tags.FFprobeGenericSubtitleTags({"language": "Unknown"})
+    assert tags_.language.alpha3 == "eng"
 
     tags.LANGUAGE_FALLBACK = None
 
