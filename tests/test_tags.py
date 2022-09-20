@@ -79,6 +79,16 @@ def test_wo_language_w_language_fallback_invalid():
     tags.LANGUAGE_FALLBACK = None
 
 
+def test_w_alpha2_language():
+    tags_ = tags.FFprobeGenericSubtitleTags({"language": "en"})
+    assert tags_.language.alpha3 == "eng"
+
+
+def test_w_alpha2_language_extra():
+    tags_ = tags.FFprobeGenericSubtitleTags({"language": "zh-Hans"})
+    assert tags_.language.alpha3 == "zho"
+
+
 @pytest.mark.parametrize(
     "content,alpha3,expected_country",
     [
