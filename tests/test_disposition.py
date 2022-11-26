@@ -6,8 +6,9 @@ import pytest
 from fese.disposition import FFprobeSubtitleDisposition
 
 
-def test_init():
-    disposition = FFprobeSubtitleDisposition(
+@pytest.fixture
+def disposition():
+    yield FFprobeSubtitleDisposition(
         {
             "default": 0,
             "dub": 0,
@@ -23,11 +24,18 @@ def test_init():
             "timed_thumbnails": 0,
         }
     )
+
+
+def test_init(disposition):
     for value in disposition.__dict__.values():
         assert not value
 
     assert disposition.default is False
     assert disposition.suffix == ""
+
+
+def test_language_kwargs(disposition):
+    assert disposition.language_kwargs() == {"hi": False, "forced": False}
 
 
 @pytest.mark.parametrize(
