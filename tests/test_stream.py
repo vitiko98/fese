@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from datetime import timedelta
+from babelfish import Language
 
 import pytest
 
@@ -58,6 +59,11 @@ def test_init(subtitle):
 
 def test_language(subtitle):
     assert subtitle.language.alpha3 == "eng"
+
+
+def test_language_set(subtitle):
+    subtitle.language = Language.fromietf("en")
+    assert subtitle.language == Language.fromietf("en")
 
 
 def test_suffix(subtitle):
