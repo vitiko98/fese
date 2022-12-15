@@ -6,6 +6,7 @@ from babelfish import Language
 
 import pytest
 
+from fese import tags
 from fese.exceptions import LanguageNotFound
 from fese.exceptions import UnsupportedCodec
 from fese.stream import FFprobeSubtitleStream
@@ -180,3 +181,31 @@ def test_convert_raises_unsupported_codec_2():
     )
     with pytest.raises(UnsupportedCodec):
         stream.convert_args("unknown", "test")
+
+
+def test_generic_stream_wo_tags_marking_generic():
+    tags.LANGUAGE_FALLBACK = "eng"
+
+    stream = FFprobeSubtitleStream(
+        {
+            "index": 2,
+            "codec_name": "ass",
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0,
+                "timed_thumbnails": 0,
+            },
+        }
+    )
+    assert stream.disposition.generic is True
+
+    tags.LANGUAGE_FALLBACK = None
