@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from datetime import timedelta
-from babelfish import Language
 
+from babelfish import Language
 import pytest
 
 from fese import tags

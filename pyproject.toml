@@ -1,0 +1,20 @@
+[project]
+name = "fese"
+version = "0.2.7"
+description = "A library to extract FFmpeg subtitle streams"
+readme = "README.md"
+requires-python = ">=3.7"
+authors = [
+    { name = "Vitiko Nogales", email = "averroista@protonmail.com" }
+]
+
+dependencies = [
+    "babelfish",
+    "pysubs2",
+]
+
+[tool.isort]
+profile = "google"
+
+[tool.pytest.ini_options]
+addopts = "--log-cli-level=debug -x -s"
