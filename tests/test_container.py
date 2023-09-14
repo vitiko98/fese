@@ -55,12 +55,32 @@ def test_extract_subtitles_convert_w_o_format(tmp_path, video):
         assert _is_text_sub_file_valid(path)
 
 
+def test_extract_subtitles_convert_w_basename_callback(tmp_path, video):
+    subtitles = video.get_subtitles()
+    subs = video.extract_subtitles(
+        subtitles, custom_dir=tmp_path, basename_callback=lambda d: "file.dummy"
+    )
+    for path in subs.values():
+        assert os.path.basename(path) == "file.dummy"
+        assert _is_text_sub_file_valid(path)
+
+
 def test_extract_subtitles_copy(tmp_path, video):
     subtitles = video.get_subtitles()
     subs = video.copy_subtitles(subtitles, custom_dir=tmp_path)
     for path in subs.values():
         assert os.path.isfile(path) is True
         assert path.endswith(".ass")
+        assert _is_text_sub_file_valid(path)
+
+
+def test_extract_subtitles_copy_w_basename_callback(tmp_path, video):
+    subtitles = video.get_subtitles()
+    subs = video.copy_subtitles(
+        subtitles, custom_dir=tmp_path, basename_callback=lambda d: "file.dummy"
+    )
+    for path in subs.values():
+        assert os.path.basename(path) == "file.dummy"
         assert _is_text_sub_file_valid(path)
 
 
