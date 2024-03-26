@@ -116,7 +116,7 @@ class FFprobeVideoContainer:
             extension_to_use = convert_format or subtitle.convert_default_format
 
             sub_path = (
-                f"{os.path.splitext(self.path)[0]}.{subtitle.suffix}.{extension_to_use}"
+                f"{os.path.splitext(self.path)[0]}.{subtitle.language}.{extension_to_use}"
             )
             if custom_dir is not None:
                 basename_callback = basename_callback or os.path.basename
@@ -189,7 +189,7 @@ class FFprobeVideoContainer:
         collected_paths = set()
 
         for subtitle in subtitles:
-            sub_path = f"{os.path.splitext(self.path)[0]}.{subtitle.suffix}.{subtitle.extension}"
+            sub_path = f"{os.path.splitext(self.path)[0]}.{subtitle.language}.{subtitle.extension}"
             if custom_dir is not None:
                 basename_callback = basename_callback or os.path.basename
                 sub_path = os.path.join(custom_dir, basename_callback(sub_path))
