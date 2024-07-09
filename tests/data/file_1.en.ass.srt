@@ -1,0 +1,468 @@
+1
+00:00:10,280 --> 00:00:13,990
+<font face="Myriad Pro" size="44">Why? Why won't you come?</font>
+
+2
+00:00:14,530 --> 00:00:16,530
+<font face="Myriad Pro" size="44">I wish you would come here...</font>
+
+3
+00:00:44,190 --> 00:00:46,650
+<font face="Myriad Pro" size="44">Look! Look at that!</font>
+
+4
+00:01:03,850 --> 00:01:09,190
+<font face="Inkburrow" size="54" color="#000000">Why you should do that...</font>
+
+5
+00:01:09,190 --> 00:01:13,240
+<font face="Inkburrow" size="54" color="#000000">...is something you should figure out for yourself.</font>
+
+6
+00:01:22,190 --> 00:01:22,970
+<font face="Myriad Pro" size="44">Gotcha!</font>
+
+7
+00:01:25,440 --> 00:01:27,270
+<font face="Myriad Pro" size="44">Hey, cut it out!</font>
+
+8
+00:01:27,270 --> 00:01:28,100
+<font face="Myriad Pro" size="44">Why?</font>
+
+9
+00:01:28,100 --> 00:01:28,860
+<font face="Myriad Pro" size="44">Don't!</font>
+
+10
+00:01:28,860 --> 00:01:31,650
+<font face="Myriad Pro" size="44">What's the problem? Don't play hard to get!</font>
+
+11
+00:01:31,650 --> 00:01:34,690
+<font face="Myriad Pro" size="44">Come on, let's go someplace happy.</font>
+
+12
+00:01:51,230 --> 00:01:55,030
+<font face="Inkburrow" size="54" color="#000000">I...</font>
+
+13
+00:01:55,030 --> 00:01:58,910
+<font face="Inkburrow" size="54" color="#000000">...don't need to stay in a place like this.</font>
+
+14
+00:02:18,570 --> 00:02:19,990
+<font face="Myriad Pro" size="44">What the hell?</font>
+
+15
+00:02:19,990 --> 00:02:20,820
+<font face="Myriad Pro" size="44">What happened?!</font>
+
+16
+00:02:24,950 --> 00:02:28,580
+<font face="Myriad Pro" size="44">W-We don't know anything! W-We've got nothing to do with this!</font>
+
+17
+00:02:28,580 --> 00:02:29,740
+<font face="Myriad Pro" size="44">She came outta nowhere...</font>
+
+18
+00:02:29,740 --> 00:02:31,380
+<font face="Myriad Pro" size="44">Oh, no...</font>
+
+19
+00:02:32,840 --> 00:02:34,090
+<font face="Myriad Pro" size="44">Damn it...</font>
+
+20
+00:02:59,260 --> 00:03:02,720
+<font face="Inkburrow" size="54" color="#000000">If you stay in a place like this...</font>
+
+21
+00:03:02,720 --> 00:03:06,430
+<font face="Inkburrow" size="54" color="#000000">...you might not be able to connect.</font>
+
+22
+00:03:53,880 --> 00:03:55,460
+<font face="Myriad Pro" size="44">What a racket...</font>
+
+23
+00:03:58,800 --> 00:04:01,510
+<font face="Myriad Pro" size="44">Can't you be quiet?</font>
+
+24
+00:04:52,160 --> 00:04:56,580
+<font face="Inkburrow" size="54" color="#000000">Everybody, hurry...</font>
+
+25
+00:05:04,820 --> 00:05:07,370
+<font face="Myriad Pro" size="44">Juri, don't make such a big deal about it.</font>
+
+26
+00:05:07,370 --> 00:05:09,910
+<font face="Myriad Pro" size="44">Yeah, it's just some stupid prank.</font>
+
+27
+00:05:09,910 --> 00:05:11,700
+<font face="Myriad Pro" size="44">B-But...</font>
+
+28
+00:05:19,420 --> 00:05:20,500
+<font face="Myriad Pro" size="44">It'll be okay.</font>
+
+29
+00:05:25,510 --> 00:05:26,430
+<font face="Myriad Pro" size="44">Lain?</font>
+
+30
+00:05:28,760 --> 00:05:30,890
+<font face="Myriad Pro" size="44">Did you get one, too?</font>
+
+31
+00:05:33,220 --> 00:05:34,520
+<font face="Myriad Pro" size="44">Get what?</font>
+
+32
+00:05:34,930 --> 00:05:36,140
+<font face="Myriad Pro" size="44">E-mail!</font>
+
+33
+00:05:36,940 --> 00:05:38,150
+<font face="Myriad Pro" size="44">E-mail?</font>
+
+34
+00:05:39,150 --> 00:05:41,770
+<font face="Myriad Pro" size="44">From Yomoda Chisa!</font>
+
+35
+00:05:42,610 --> 00:05:46,030
+<font face="Myriad Pro" size="44">I... I'm not very good with computers.</font>
+
+36
+00:05:46,820 --> 00:05:49,910
+<font face="Myriad Pro" size="44">You should at least check your mail once a day.</font>
+
+37
+00:05:49,910 --> 00:05:51,700
+<font face="Myriad Pro" size="44">Well, it's up to you, I guess.</font>
+
+38
+00:05:51,700 --> 00:05:53,660
+<font face="Myriad Pro" size="44">Lain's such a baby.</font>
+
+39
+00:05:59,290 --> 00:06:01,750
+<font face="Myriad Pro" size="44">Why is she crying?</font>
+
+40
+00:06:01,750 --> 00:06:06,090
+<font face="Myriad Pro" size="44">Because she got an e-mail from Yomoda Chisa, that's why!</font>
+
+41
+00:06:07,680 --> 00:06:09,760
+<font face="Myriad Pro" size="44">Chisa? Who's that?</font>
+
+42
+00:06:09,760 --> 00:06:11,180
+<font face="Myriad Pro" size="44">She was in class D.</font>
+
+43
+00:06:11,180 --> 00:06:13,760
+<font face="Myriad Pro" size="44">She killed herself last week by jumping off a building in Shibuya.</font>
+
+44
+00:06:13,760 --> 00:06:15,890
+<font face="Myriad Pro" size="44">Come on, the teacher told everybody!</font>
+
+45
+00:06:16,730 --> 00:06:18,350
+<font face="Myriad Pro" size="44">It's not just Juri.</font>
+
+46
+00:06:20,440 --> 00:06:23,900
+<font face="Myriad Pro" size="44">Lots of people have gotten mail from her this week.</font>
+
+47
+00:06:23,900 --> 00:06:26,070
+<font face="Myriad Pro" size="44">But she's...</font>
+
+48
+00:06:26,470 --> 00:06:29,770
+<font face="Myriad Pro" size="44">Right. You shouldn't be getting mail from a dead girl.</font>
+
+49
+00:06:30,200 --> 00:06:31,780
+<font face="Myriad Pro" size="44">But there it is.</font>
+
+50
+00:07:27,780 --> 00:07:31,660
+<font face="Inkburrow" size="54" color="#000000">What's it like when you die?</font>
+
+51
+00:07:31,660 --> 00:07:34,620
+<font face="Inkburrow" size="54" color="#000000">It really hurts. :)</font>
+
+52
+00:09:08,520 --> 00:09:10,820
+<font face="Tahoma" size="32" color="#aeacc5">Powering up... Working...</font>
+
+53
+00:09:10,820 --> 00:09:13,970
+<font face="Tahoma" size="32" color="#aeacc5">Just a little longer...</font>
+
+54
+00:09:13,970 --> 00:09:15,240
+<font face="Tahoma" size="32" color="#aeacc5">Log in.</font>
+
+55
+00:09:17,570 --> 00:09:18,950
+<font face="Myriad Pro" size="44">Who are you?</font>
+
+56
+00:09:30,520 --> 00:09:33,760
+<font face="Myriad Pro" size="44">Lain. Please say your name.</font>
+
+57
+00:09:33,760 --> 00:09:36,050
+<font face="Myriad Pro" size="44">La-i-n.</font>
+
+58
+00:09:37,130 --> 00:09:38,690
+<font face="Myriad Pro" size="44">Accepted.</font>
+
+59
+00:09:41,160 --> 00:09:42,830
+<font face="Myriad Pro" size="44">You must be Lain.</font>
+
+60
+00:09:44,060 --> 00:09:47,850
+<font face="Myriad Pro" size="44">Lain has mail.</font>
+
+61
+00:09:48,600 --> 00:09:49,940
+<font face="Myriad Pro" size="44">From who?</font>
+
+62
+00:09:49,940 --> 00:09:52,110
+<font face="Myriad Pro" size="44">Yomoda Chisa.</font>
+
+63
+00:09:53,570 --> 00:09:56,360
+<font face="Myriad Pro" size="44">Do you wish to read your mail?</font>
+
+64
+00:10:00,210 --> 00:10:03,950
+<font face="Tahoma" size="32" color="#aeacc5">Hello, how are you?</font>
+
+65
+00:10:06,080 --> 00:10:07,590
+<font face="Myriad Pro" size="44">Hello.</font>
+
+66
+00:10:10,160 --> 00:10:11,320
+<font face="Myriad Pro" size="44">How are you?</font>
+
+67
+00:10:19,740 --> 00:10:26,750
+<font face="Myriad Pro" size="44">Lain, I walked home with you just once. Do you remember?</font>
+
+68
+00:10:28,810 --> 00:10:34,380
+<font face="Myriad Pro" size="44">I have only given up my body.</font>
+
+69
+00:10:34,380 --> 00:10:39,200
+<font face="Myriad Pro" size="44">By doing this, I can explain to you that I am still alive.</font>
+
+70
+00:10:40,300 --> 00:10:45,640
+<font face="Myriad Pro" size="44">I wanted to let you know this, Lain, so I sent this e-mail to you.</font>
+
+71
+00:10:45,640 --> 00:10:49,810
+<font face="Myriad Pro" size="44">Do you understand? It's okay if you can't right now.</font>
+
+72
+00:10:49,810 --> 00:10:54,320
+<font face="Myriad Pro" size="44">You will all understand soon. Everyone will.</font>
+
+73
+00:10:55,360 --> 00:10:57,630
+<font face="Myriad Pro" size="44">Why did you die?</font>
+
+74
+00:10:58,570 --> 00:11:03,790
+<font face="Myriad Pro" size="44">Rumor at school has it that this is a prank e-mail,</font>
+
+75
+00:11:03,790 --> 00:11:08,060
+<font face="Myriad Pro" size="44">but I want you to know that it isn't, Lain.</font>
+
+76
+00:11:08,960 --> 00:11:13,230
+<font face="Myriad Pro" size="44">Why? Why did you die?</font>
+
+77
+00:11:17,720 --> 00:11:23,280
+<font face="Myriad Pro" size="44">God is here.</font>
+
+78
+00:11:24,180 --> 00:11:25,180
+<font face="Myriad Pro" size="44">Huh?</font>
+
+79
+00:11:27,310 --> 00:11:31,290
+<font face="Tahoma" size="32" color="#aeacc5"><font color="#61d0e4">God...</font></font>
+
+80
+00:11:50,750 --> 00:11:54,590
+<font face="Myriad Pro" size="44">I ate lunch late today. I'm done.</font>
+
+81
+00:12:02,430 --> 00:12:03,640
+<font face="Myriad Pro" size="44">Mom?</font>
+
+82
+00:12:03,640 --> 00:12:04,930
+<font face="Myriad Pro" size="44">Yes?</font>
+
+83
+00:12:04,930 --> 00:12:06,680
+<font face="Myriad Pro" size="44">I got an e-mail.</font>
+
+84
+00:12:10,230 --> 00:12:13,520
+<font face="Myriad Pro" size="44">From a girl who killed herself last week.</font>
+
+85
+00:12:57,940 --> 00:13:00,300
+<font face="Myriad Pro" size="44">What is it, Lain?</font>
+
+86
+00:13:01,240 --> 00:13:04,910
+<font face="Myriad Pro" size="44">It's certainly unusual to see you in here.</font>
+
+87
+00:13:24,130 --> 00:13:25,510
+<font face="Myriad Pro" size="44">I...</font>
+
+88
+00:13:29,120 --> 00:13:33,040
+<font face="Myriad Pro" size="44">I was wondering if you could buy me a new Navi...</font>
+
+89
+00:13:34,560 --> 00:13:36,610
+<font face="Myriad Pro" size="44">Finally caught the bug, huh?</font>
+
+90
+00:13:41,900 --> 00:13:45,010
+<font face="Myriad Pro" size="44">You're in junior high now.</font>
+
+91
+00:13:45,820 --> 00:13:48,010
+<font face="Myriad Pro" size="44">Your friends are leaving you in the dust, right?</font>
+
+92
+00:13:48,330 --> 00:13:50,940
+<font face="Myriad Pro" size="44">I keep telling you that you should use a better machine.</font>
+
+93
+00:13:55,750 --> 00:13:58,150
+<font face="Myriad Pro" size="44">You know, Lain, in this world,</font>
+
+94
+00:13:59,080 --> 00:14:01,950
+<font face="Myriad Pro" size="44">whether it's here in the real world or in the Wired,</font>
+
+95
+00:14:04,010 --> 00:14:09,030
+<font face="Myriad Pro" size="44">people connect to each other, and that's how societies function.</font>
+
+96
+00:14:16,570 --> 00:14:21,040
+<font face="Myriad Pro" size="44">Even a girl like you can make friends right off the bat, Lain.</font>
+
+97
+00:14:21,530 --> 00:14:23,900
+<font face="Myriad Pro" size="44">There's nothing to be afraid of.</font>
+
+98
+00:14:25,050 --> 00:14:29,120
+<font face="Myriad Pro" size="44">I wonder why your mother can't understand that?</font>
+
+99
+00:14:36,140 --> 00:14:39,170
+<font face="Myriad Pro" size="44">I'm not scared.</font>
+
+100
+00:14:40,250 --> 00:14:44,720
+<font face="Myriad Pro" size="44">But why bring up your Navi all of a sudden?</font>
+
+101
+00:14:50,550 --> 00:14:53,080
+<font face="Myriad Pro" size="44">There's a friend I want to see.</font>
+
+102
+00:15:17,870 --> 00:15:19,920
+<font face="Myriad Pro" size="44">What happened?</font>
+
+103
+00:15:17,870 --> 00:15:19,920
+<font face="Myriad Pro" size="44">Damn it...</font>
+
+104
+00:15:19,920 --> 00:15:22,650
+<font face="Myriad Pro" size="44">We apologize for the inconvenience, ladies and gentlemen.</font>
+
+105
+00:15:23,420 --> 00:15:26,380
+<font face="Myriad Pro" size="44">The train is currently stopped due to an accident.</font>
+
+106
+00:15:26,380 --> 00:15:27,760
+<font face="Myriad Pro" size="44">What?</font>
+
+107
+00:15:27,760 --> 00:15:29,260
+<font face="Myriad Pro" size="44">Was someone hit?</font>
+
+108
+00:15:29,260 --> 00:15:30,970
+<font face="Myriad Pro" size="44">I can't believe this...</font>
+
+109
+00:18:12,630 --> 00:18:14,340
+<font face="Myriad Pro" size="44">Miss Iwakura.</font>
+
+110
+00:18:22,220 --> 00:18:23,580
+<font face="Myriad Pro" size="44">Miss Iwakura.</font>
+
+111
+00:18:23,850 --> 00:18:25,310
+<font face="Myriad Pro" size="44">Yes, ma'am.</font>
+
+112
+00:18:25,310 --> 00:18:28,580
+<font face="Myriad Pro" size="44">This will be on the test.</font>
+
+113
+00:18:39,490 --> 00:18:44,490
+<font face="Myriad Pro" size="44">Come to the Wired as soon as you can.</font>
+
+114
+00:18:47,200 --> 00:18:55,210
+<font face="Myriad Pro" size="44">{\an8}Come to the Wired as soon as you can.</font>
+
+115
+00:19:34,500 --> 00:19:36,090
+<font face="Myriad Pro" size="44">Chisa?</font>
+
+116
+00:19:39,150 --> 00:19:41,760
+<font face="Myriad Pro" size="44">Where are you?</font>
+
+117
+00:20:06,330 --> 00:20:07,790
+<font face="Myriad Pro" size="44">Wait!</font>
+

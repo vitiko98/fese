@@ -1,0 +1,64 @@
+1
+00:01:03,850 --> 00:01:09,190
+<font face="Inkburrow" size="54" color="#000000">Why you should do that...</font>
+
+2
+00:01:09,190 --> 00:01:13,240
+<font face="Inkburrow" size="54" color="#000000">...is something you should figure out for yourself.</font>
+
+3
+00:01:51,230 --> 00:01:55,030
+<font face="Inkburrow" size="54" color="#000000">I...</font>
+
+4
+00:01:55,030 --> 00:01:58,910
+<font face="Inkburrow" size="54" color="#000000">...don't need to stay in a place like this.</font>
+
+5
+00:02:59,260 --> 00:03:02,720
+<font face="Inkburrow" size="54" color="#000000">If you stay in a place like this...</font>
+
+6
+00:03:02,720 --> 00:03:06,430
+<font face="Inkburrow" size="54" color="#000000">...you might not be able to connect.</font>
+
+7
+00:04:52,160 --> 00:04:56,580
+<font face="Inkburrow" size="54" color="#000000">Everybody, hurry...</font>
+
+8
+00:07:27,780 --> 00:07:31,660
+<font face="Inkburrow" size="54" color="#000000">What's it like when you die?</font>
+
+9
+00:07:31,660 --> 00:07:34,620
+<font face="Inkburrow" size="54" color="#000000">It really hurts. :)</font>
+
+10
+00:09:08,520 --> 00:09:10,820
+<font face="Tahoma" size="32" color="#aeacc5">Powering up... Working...</font>
+
+11
+00:09:10,820 --> 00:09:13,970
+<font face="Tahoma" size="32" color="#aeacc5">Just a little longer...</font>
+
+12
+00:09:13,970 --> 00:09:15,240
+<font face="Tahoma" size="32" color="#aeacc5">Log in.</font>
+
+13
+00:10:00,210 --> 00:10:03,950
+<font face="Tahoma" size="32" color="#aeacc5">Hello, how are you?</font>
+
+14
+00:11:27,310 --> 00:11:31,290
+<font face="Tahoma" size="32" color="#aeacc5"><font color="#61d0e4">God...</font></font>
+
+15
+00:18:39,490 --> 00:18:44,490
+<font face="Myriad Pro" size="44">Come to the Wired as soon as you can.</font>
+
+16
+00:18:47,200 --> 00:18:55,210
+<font face="Myriad Pro" size="44">{\an8}Come to the Wired as soon as you can.</font>
+

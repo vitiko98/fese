@@ -37,7 +37,10 @@ def test_get_subtitles(video):
 def test_extract_subtitles_convert_w_format(tmp_path, video, convert_format):
     subtitles = video.get_subtitles()
     subs = video.extract_subtitles(
-        subtitles, custom_dir=tmp_path, convert_format=convert_format
+        subtitles,
+        custom_dir=tmp_path,
+        convert_format=convert_format,
+        progress_callback=lambda d: print(f"Progress: {d}"),
     )
     for path in subs.values():
         _is_text_sub_file_valid(path)
@@ -58,7 +61,10 @@ def test_extract_subtitles_convert_w_o_format(tmp_path, video):
 def test_extract_subtitles_convert_w_basename_callback(tmp_path, video):
     subtitles = video.get_subtitles()
     subs = video.extract_subtitles(
-        subtitles, custom_dir=tmp_path, basename_callback=lambda d: "file.dummy"
+        subtitles,
+        custom_dir=tmp_path,
+        basename_callback=lambda d: "file.dummy",
+        progress_callback=lambda d: print(f"Progress: {d}"),
     )
     for path in subs.values():
         assert os.path.basename(path) == "file.dummy"
