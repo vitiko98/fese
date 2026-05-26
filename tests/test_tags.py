@@ -99,6 +99,21 @@ def test_wo_language_w_language_fallback_invalid():
     tags.LANGUAGE_FALLBACK = None
 
 
+@pytest.mark.parametrize(
+    "alpha3t,expected_alpha3b",
+    [
+        ("fra", "fre"),  # French
+        ("deu", "ger"),  # German
+        ("zho", "chi"),  # Chinese
+        ("ces", "cze"),  # Czech
+    ],
+)
+def test_iso639_2t_language_codes(alpha3t, expected_alpha3b):
+    """ffprobe can return ISO 639-2/T codes; _get_language should accept both variants."""
+    tags_ = tags.FFprobeGenericSubtitleTags({"language": alpha3t})
+    assert tags_.language.alpha3b == expected_alpha3b
+
+
 def test_w_alpha2_language():
     tags_ = tags.FFprobeGenericSubtitleTags({"language": "en"})
     assert tags_.language.alpha3 == "eng"
