@@ -52,6 +52,16 @@ def test_get_language(tags_dict):
 
 
 @pytest.mark.parametrize(
+    "alpha3t,expected_alpha3b",
+    [("fra", "fre"), ("deu", "ger"), ("zho", "chi"), ("ces", "cze")],
+)
+def test_get_language_iso639_2t_codes(alpha3t, expected_alpha3b):
+    """ffprobe can return ISO 639-2/T codes; _get_language should accept both variants."""
+    lang = tags._get_language({"language": alpha3t})
+    assert lang.alpha3b == expected_alpha3b
+
+
+@pytest.mark.parametrize(
     "tags_dict",
     [
         {
